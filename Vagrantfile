@@ -10,17 +10,11 @@ SCRIPT
 
 packages_installation_script = <<-SCRIPT
 dnf -y install ansible git
+pip3 install pyvmomi
 SCRIPT
 
 install_ansible_vault_password_file_script = <<-SCRIPT 
 echo pwd=$PWD
-echo #{ANSIBLE_VAULT_PASSWORD} > .vault
-chmod 400 .vault
-SCRIPT
-
-install_ansible_vault_password_file_script = <<-SCRIPT 
-cd
-rm -f .vault
 echo #{ANSIBLE_VAULT_PASSWORD} > .vault
 chmod 400 .vault
 SCRIPT
@@ -31,6 +25,10 @@ Host *
     StrictHostKeyChecking no
 EOF
 chmod 400 .ssh/config
+SCRIPT
+
+clone_git_repositories_script = <<-SCRIPT
+git clone git@github.com:lautou/vsphere-nat-gateway.git
 SCRIPT
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
@@ -104,4 +102,5 @@ Vagrant.configure("2") do |config|
   config.vm.provision "install_ansible_vault_password_file", type: "shell", inline: install_ansible_vault_password_file_script, privileged: false
   config.vm.provision "install_git_ssh_private_key", type: "file", source: "#{SSH_PRIVATE_KEY_PATH}", destination: ".ssh/"
   config.vm.provision "configure_ssh", type: "shell", inline: configure_ssh_script, privileged: false
+  config.vm.provision "clone_git_repositories_script", type: "shell", inline: clone_git_repositories_script, privileged: false
 end
