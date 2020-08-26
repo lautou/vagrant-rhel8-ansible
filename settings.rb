@@ -10,3 +10,13 @@ ANSIBLE_VAULT_PASSWORD="aP@ssW0rdf0r8nsib1e"
 # Path to your SSH private key on your laptop for git access
 SSH_PRIVATE_KEY_PATH="~/.ssh/id_rsa"
 
+# Prepare the git workspace with the next parameters below. Put to no, if you don't want to prepare the workspace or if git repo has not been initialized remotely yet.
+PREPARE_GIT_WORKSPACE="no"
+
+# Git URL. Must use SSH URL format.
+GIT_URL_WORKSPACE="git@github.com:account/a-repository"
+# Git user name.
+GIT_USER_NAME="User Name"
+# Git user email
+GIT_USER_EMAIL="user@domain.com"
+
