@@ -13,7 +13,7 @@ The goal is to create a clean environnement for Ansible playbooks development.
 
 ## Installation
 1.  Clone this repository on your laptop.
-2.  Fill the variables in *settings.rb*. All variables are examples. You have to set the correct value.
+2.  Fill the variables in [settings.rb](settings.rb). All variables are examples here. You have to set the correct values.
     ```
      # Red Hat Subscription Management
      RHSM_ORG="12345678"               # Organization ID.
@@ -25,6 +25,7 @@ The goal is to create a clean environnement for Ansible playbooks development.
      # Path to your SSH private key on your laptop for GitLab access
      SSH_PRIVATE_KEY_PATH="~/.ssh/id_rsa"
     ```
+    Review the complete file before continuing.
 3.  Run vagrant
     ```
     vagrant up
